@@ -18,7 +18,7 @@ class ContentController extends Controller
     public function index()
     {
         try {
-            $contents = Content::with('category')->get();
+            $contents = Content::with('category', 'tags')->get();
 
             // Append full URL for the file
             $contents->transform(function ($content) {
@@ -95,7 +95,7 @@ class ContentController extends Controller
     public function show(string $id)
     {
         try {
-            $content = Content::with('category')->where('id', $id)->first();
+            $content = Content::with('category', 'tags.tag')->where('id', $id)->first();
 
             if (!$content) {
                 return response()->json([

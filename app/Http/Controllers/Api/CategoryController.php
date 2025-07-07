@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         try {
-            $category = Category::all();
+            $category = Category::with('content', 'plan')->get();
 
             return response()->json([
                 'data' => $category
@@ -70,7 +70,7 @@ class CategoryController extends Controller
     public function show(string $id)
     {
         try {
-            $category = Category::where('id', $id)->first();
+            $category = Category::with('content', 'plan')->where('id', $id)->first();
 
             return response()->json([
                 'data' => $category

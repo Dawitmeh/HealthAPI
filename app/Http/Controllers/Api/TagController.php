@@ -16,7 +16,7 @@ class TagController extends Controller
     public function index()
     {
         try {
-            $tags = Tag::all();
+            $tags = Tag::with('content')->get();
 
             return response()->json([
                 'data' => $tags
@@ -68,7 +68,7 @@ class TagController extends Controller
     public function show(string $id)
     {
         try {
-            $tag = Tag::where('id', $id)->first();
+            $tag = Tag::with('content')->where('id', $id)->first();
 
             return response()->json([
                 'data' => $tag

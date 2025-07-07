@@ -15,4 +15,16 @@ class Category extends Model
         'slug',
         'description'
     ];
+
+
+
+    public function content() 
+    {
+        return $this->hasMany(Content::class, 'category_id');
+    }
+
+    public function plan()
+    {
+        return $this->hasMany(SubscriptionPlan::class, 'category_id');
+    }
 }

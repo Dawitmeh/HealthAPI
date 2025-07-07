@@ -15,4 +15,11 @@ class Tag extends Model
         'name',
         'slug'
     ];
+
+
+
+    public function content() 
+    {
+        return $this->hasMany(ContentTag::class, 'tag_id');
+    }
 }

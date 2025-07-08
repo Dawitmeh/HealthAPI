@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AccountController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ContentController;
@@ -25,8 +26,7 @@ Route::post('/adminlogin', [AuthController::class, 'adminLogin']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    // Main routes
-
+    // Main routes Admin
     Route::resource('/category', CategoryController::class);
     Route::resource('/contents', ContentController::class);
     Route::resource('/tags', TagController::class);
@@ -35,5 +35,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('/payments', PaymentController::class);
     Route::resource('/customers', CustomerController::class);
     Route::resource('/staffs', StaffController::class);
+
+
+    // Client Side
+    Route::resource('/account', AccountController::class);
 });
 

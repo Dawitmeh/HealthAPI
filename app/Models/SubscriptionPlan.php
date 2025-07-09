@@ -15,7 +15,12 @@ class SubscriptionPlan extends Model
         'name',
         'price',
         'plan_type',
-        'description'
+        'description',
+        'features'
+    ];
+
+    protected $casts = [
+        'features' => 'array'
     ];
 
     public function category() 

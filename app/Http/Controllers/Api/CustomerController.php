@@ -147,7 +147,7 @@ class CustomerController extends Controller
                     'string',
                     Rule::unique('users')->ignore($id),
                 ],
-                'password' => 'required|string|confirmed',
+                'password' => 'nullable|string|confirmed',
                 'avatar' => 'nullable|string'
             ], [
 
@@ -160,7 +160,7 @@ class CustomerController extends Controller
             $rawPhone = ltrim($request->phone, '0');
             $phone = '+251' . $rawPhone;
 
-            if (isset($validateData['avatar']) && Str::startsWith($validateData['avatar'], 'data:avatar')) {
+            if (isset($validateData['avatar']) && Str::startsWith($validateData['avatar'], 'data:image')) {
                 $relativePath = $this->saveImage($validateData['avatar']);
                 $validateData['avatar'] = $relativePath;
 

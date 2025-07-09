@@ -17,7 +17,7 @@ class SubscriptionController extends Controller
     public function index()
     {
         try {
-            $subscriptions = Subscription::with('plan', 'user')->get();
+            $subscriptions = Subscription::with('plan.category', 'user.payment')->get();
 
             return response()->json([
                 'data' => $subscriptions
@@ -84,7 +84,7 @@ class SubscriptionController extends Controller
     public function show(string $id)
     {
         try {
-            $subscription = Subscription::with('plan', 'user')->where('id', $id)->first();
+            $subscription = Subscription::with('plan.category', 'user.payment')->where('id', $id)->first();
 
             return response()->json([
                 'data' => $subscription

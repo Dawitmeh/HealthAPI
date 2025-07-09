@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->enum('plan_type', ['trial', 'daily', 'monthly', 'yearly']); // in days
             $table->text('description')->nullable();
+            $table->json('features')->nullable();
             $table->timestamps();
         });
     }

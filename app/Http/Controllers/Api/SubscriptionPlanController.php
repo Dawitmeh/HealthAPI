@@ -47,7 +47,8 @@ class SubscriptionPlanController extends Controller
                 'name' => 'required|string',
                 'price' => 'required|numeric',
                 'plan_type' => 'required',
-                'description' => 'required'
+                'description' => 'required',
+                'features' => 'nullable' 
             ]);
 
             $plan = SubscriptionPlan::create($data);
@@ -100,7 +101,8 @@ class SubscriptionPlanController extends Controller
             'name' => 'required|string',
             'price' => 'required|numeric',
             'plan_type' => 'required',
-            'description' => 'required|string'
+            'description' => 'required|string',
+            'features' => 'nullable'
         ]);
 
         $plan = SubscriptionPlan::where('id', $id)->first();
